@@ -1,0 +1,23 @@
+module demux_2x1(i,en,s,y);
+input i;
+input en;
+input s;
+output reg [1:0]y;
+always@(*)
+begin
+y[0]=(~s)&i;
+y[1]=(s)&i;
+end  
+endmodule
+
+
+module demux_4x1(i,en,s,y);
+input i;
+input en;
+input [1:0]s;
+output  [3:0]y;
+wire  [1:0]w;
+demux_2x1 dut(i,en,s[1],w[1:0]);
+demux_2x1 dut1(w[0],en,s[0],y[1:0]);
+demux_2x1 dut2 (w[1],en,s[0],y[3:2]);
+endmodule
