@@ -13,3 +13,32 @@ always@(*)
 endcase
 end
 endmodule
+
+//testbench
+module muxx_tb();
+reg [3:0]i0,i1,i2,i3;
+reg [1:0]s;
+wire [3:0]y;
+muxx dut(.i0(i0),.i1(i1),.i2(i2),.i3(i3),.s(s),.y(y));
+
+initial begin
+
+$monitor("time=%0t s=%b i0=%d i1=%d i2=%d i3=%d y=%d", 
+          $time, s[0],s[2], i0, i1, i2, i3, y);
+
+
+  // Assign inputs
+        i0 = 2;  
+        i1 = 3; 
+        i2 = 4; 
+        i3 = 5; 
+        
+
+        s=2'b00;
+#10 s=2'b01;
+#10 s=2'b10;
+#10 s=2'b11;
+#10 $finish;
+end  
+
+endmodule
