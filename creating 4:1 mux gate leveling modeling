@@ -1,0 +1,13 @@
+module muxgl(
+    input I0, I1, I2, I3,
+    input s0, s1,
+    output y
+);
+    wire w0, w1, w2, w3;
+
+    and a1(w0, ~s0, ~s1, I0);
+    and a2(w1,  s0, ~s1, I1);
+    and a3(w2, ~s0,  s1, I2);
+    and a4(w3,  s0,  s1, I3);
+    or  o1(y, w0, w1, w2, w3);
+endmodule
