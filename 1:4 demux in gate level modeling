@@ -1,0 +1,17 @@
+
+module demuxgl(
+input i,
+input [1:0]s,
+output  [3:0]y);
+wire w0,w1;
+
+not n0(w0,s[0]);
+not n1(w1,s[1]);
+and a1(y[0],w0,w1,i);
+and a2(y[1],s[1],w0,i);
+and a3(y[2],s[0],w1,i);
+and a4(y[3],s[1],s[0],i);
+
+
+
+endmodule
