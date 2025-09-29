@@ -1,0 +1,6 @@
+module encoderdf(
+input [3:0]i,
+output [2:0]y);
+assign y[1]=i[3]|i[2];
+assign y[0]=i[3]|i[1];
+endmodule
